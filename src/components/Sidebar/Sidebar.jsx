@@ -48,16 +48,14 @@ const Sidebar = () => {
         position={'sticky'}
         top={0}
         left={0}
-        px={{ base: 2, md: 4 }}
-      >
+        px={{ base: 2, md: 4 }}>
         <Flex direction={'column'} gap={10} w={'full'} height={'full'}>
           <Link
             to={'/'}
             as={RouterLink}
             pl={2}
             display={{ base: 'none', md: 'block' }}
-            cursor={'pointer'}
-          >
+            cursor={'pointer'}>
             <InstagramLogo />
           </Link>
 
@@ -69,8 +67,7 @@ const Sidebar = () => {
             cursor={'pointer'}
             borderRadius={6}
             _hover={{ bg: 'whiteAlpha.200' }}
-            w={10}
-          >
+            w={10}>
             <InstagramMobileLogo />
           </Link>
           <Flex direction={'column'} gap={5} cursor={'pointer'}>
@@ -82,8 +79,7 @@ const Sidebar = () => {
                 key={index}
                 ml={1}
                 openDelay={500}
-                display={{ base: 'block', md: 'none' }}
-              >
+                display={{ base: 'block', md: 'none' }}>
                 <Link
                   display={'flex'}
                   to={item.link || null}
@@ -94,8 +90,7 @@ const Sidebar = () => {
                   borderRadius={6}
                   p={2}
                   w={{ base: 10, md: 'full' }}
-                  justifyContent={{ base: 'center', md: 'flex-start' }}
-                >
+                  justifyContent={{ base: 'center', md: 'flex-start' }}>
                   {item.icon}
                   <Box display={{ base: 'none', md: 'block' }}>{item.text}</Box>
                 </Link>
@@ -108,8 +103,7 @@ const Sidebar = () => {
             placement="right"
             ml={1}
             openDelay={500}
-            display={{ base: 'block', md: 'none' }}
-          >
+            display={{ base: 'block', md: 'none' }}>
             <Link
               display={'flex'}
               to={'/auth'}
@@ -121,8 +115,7 @@ const Sidebar = () => {
               p={2}
               w={{ base: 10, md: 'full' }}
               mt={'auto'}
-              justifyContent={{ base: 'center', md: 'flex-start' }}
-            >
+              justifyContent={{ base: 'center', md: 'flex-start' }}>
               <BiLogOut size={25} />
               <Box display={{ base: 'none', md: 'block' }}>Log out</Box>
             </Link>
