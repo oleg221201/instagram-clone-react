@@ -1,6 +1,6 @@
 // eslint-disable-next-line
-import { Box, Flex, Text, VStack } from '@chakra-ui/react';
 import React from 'react';
+import { Box, Flex, Text, VStack } from '@chakra-ui/react';
 import SuggestedHeader from './SuggestedHeader';
 import SuggestedUser from './SuggestedUser';
 
