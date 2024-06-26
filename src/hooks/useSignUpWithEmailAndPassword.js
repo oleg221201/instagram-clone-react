@@ -1,5 +1,5 @@
 import { auth, firestore } from '../firebase/index.js';
-import { doc, setDoc } from 'firebase/firestore';
+import { collection, doc, getDocs, query, setDoc, where } from 'firebase/firestore';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import useShowToast from './useShowToast.js';
 import useAuthStore from '../store/authStore.js';
@@ -16,10 +16,23 @@ const useSignUpWithEmailAndPassword = () => {
       showToast('Error', 'Please fill all the fields', 'error');
       return;
     }
+
+    const userRef = collection(firestore, 'users');
+
+    const userQuery = query(userRef, where('username', '==', inputs.username));
+    const querySnapshot = await getDocs(userQuery);
+
+    if (!querySnapshot.empty) {
+      showToast('Error', 'Username already taken', 'error');
+      return;
+    }
+
     try {
       const newUser = await createUserWithEmailAndPassword(inputs.email, inputs.password);
 
       if (!newUser && error) {
+        console.log('newUser');
+        console.log({ error });
         showToast('Error', error.message, 'error');
         return;
       }
@@ -43,6 +56,8 @@ const useSignUpWithEmailAndPassword = () => {
         loginUser(userDocument);
       }
     } catch (error) {
+      console.log('catch');
+      console.log({ error });
       showToast('Error', error.message, 'error');
     }
   };
